@@ -1,0 +1,21 @@
+// Import the axios library
+const axios = require('axios');
+
+// The username of the GitHub account you want to fetch the repositories from
+const username = 'username';
+
+// Use GitHub's REST API to fetch the repositories
+axios.get(`https://api.github.com/users/${username}/repos`)
+    .then(response => {
+        // The response.data property will contain the repositories
+        const repos = response.data;
+
+        // Log each repository's name
+        for (let repo of repos) {
+            console.log(repo.name);
+        }
+    })
+    .catch(error => {
+        // If an error occurred, log it
+        console.log('Error: ', error);
+    });
